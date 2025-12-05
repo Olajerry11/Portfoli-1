@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olayiwola | Creative Developer</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="Olayiwola Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+                <span class="fire-text">OLA</span>JERRY
+            </a>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="experience.html" class="nav-link">Experience</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <canvas id="fireCanvas"></canvas>
+        <div class="container hero-content scroll-reveal">
+            <div class="hero-text">
+                <h1 class="mint-title">Building <br> <span class="fire-text">Digital Heat</span></h1>
+                <p>I craft responsive, high-performance websites with buttery smooth interactions.</p>
+                <div class="cta-group">
+                    <a href="contact.html" class="btn btn-fire">Start a Project</a>
+                    <a href="experience.html" class="btn btn-mint">View Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Powered By</h2>
+            <div class="skills-grid scroll-reveal delay-1" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <img src="assets/images/html.jpg" alt="HTML5" style="height: 60px; border-radius: 8px;" title="HTML5">
+                <img src="assets/images/css.jpg" alt="CSS3" style="height: 60px; border-radius: 8px;" title="CSS3">
+                <img src="assets/images/logo_js.jpg" alt="JavaScript" style="height: 60px; border-radius: 8px;" title="JavaScript">
+                <img src="assets/images/logo_python.jpg" alt="Python" style="height: 60px; border-radius: 8px;" title="Python">
+                <img src="assets/images/c++.png" alt="C++" style="height: 60px; border-radius: 8px;" title="C++">
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: rgba(255,255,255,0.02);">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">What I Bring</h2>
+            <div class="grid-3">
+                <div class="card scroll-reveal delay-1">
+                    <i class="fas fa-code fire-icon"></i>
+                    <h3>Frontend Dev</h3>
+                    <p>Clean semantic HTML & CSS that flows like water.</p>
+                </div>
+                <div class="card scroll-reveal delay-2">
+                    <i class="fas fa-mobile-alt fire-icon"></i>
+                    <h3>Responsive</h3>
+                    <p>Pixel-perfect layouts on every device known to man.</p>
+                </div>
+                <div class="card scroll-reveal delay-3">
+                    <i class="fas fa-bolt fire-icon"></i>
+                    <h3>Performance</h3>
+                    <p>Optimized builds that load faster than a spark.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding cta-section fade-in-up" style="background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url('assets/images/background.jpg') no-repeat center center/cover; text-align: center;">
+        <div class="container scroll-reveal">
+            <h2 class="fire-text" style="font-size: 2.5rem; margin-bottom: 20px;">Let's Ignite Your Next Idea</h2>
+            <p style="margin-bottom: 30px; font-size: 1.2rem;">Have a project in mind? Let's collaborate and build something remarkable.</p>
+            <a href="contact.html" class="btn btn-fire">Get In Touch</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2025 Olayiwola. Built with <i class="fas fa-fire fire-text"></i> & Code.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
