@@ -7,22 +7,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Form Styles integrated here for simplicity */
-        .form-group { margin-bottom: 20px; }
-        .form-input {
-            width: 100%; padding: 15px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px; color: var(--text-white);
-            font-family: inherit; transition: 0.3s;
-        }
-        .form-input:focus {
-            outline: none; border-color: var(--mint-accent);
-            background: rgba(255,255,255,0.08);
-        }
-        textarea.form-input { resize: vertical; height: 120px; }
-    </style>
 </head>
 <body>
     <div class="cursor-dot" data-cursor-dot></div>
@@ -31,7 +15,7 @@
     <header class="navbar">
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="assets/images/logo.png" alt="Olayiwola Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+                <img src="assets/images/logo.png" alt="Logo" style="height: 40px; margin-right: 10px;">
                 <span class="fire-text">OLA</span>JERRY
             </a>
             <div class="menu-toggle" id="mobile-menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
@@ -47,54 +31,31 @@
         </div>
     </header>
 
-    <section class="hero" style="height: 50vh; background: rgba(15, 23, 42, 0.8);">
-        <div class="container hero-content scroll-reveal" style="justify-content: center; text-align: center;">
+    <section class="hero" style="height: 50vh;">
+        <div class="container hero-content scroll-reveal" style="justify-content: center;">
             <h1 class="mint-title">Get In <span class="fire-text">Touch</span></h1>
         </div>
     </section>
 
     <section class="section-padding">
         <div class="container">
-            <div class="grid-3" style="grid-template-columns: 1fr 1fr; gap: 50px;">
+            <div class="grid-3" style="grid-template-columns: 1fr 1fr; gap: 40px;">
                 <div class="scroll-reveal delay-1">
-                    <h2 class="section-title" style="text-align: left;">Let's Connect</h2>
-                    <p style="margin-bottom: 30px;">I'm currently available for freelance work or full-time positions. Drop me a line if you have a project in mind!</p>
-                    
-                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                        <i class="fas fa-envelope fire-icon" style="font-size: 1.2rem; margin-bottom: 0; margin-right: 15px;"></i>
-                        <a href="mailto:jeremiahblessing931@gmail.com" class="nav-link">jeremiahblessing931@gmail.com</a>
-                    </div>
-                    <div style="display: flex; align-items: center;">
-                        <i class="fab fa-linkedin fire-icon" style="font-size: 1.2rem; margin-bottom: 0; margin-right: 15px;"></i>
-                        <a href="#" class="nav-link">LinkedIn Profile</a> </div>
+                    <h2 class="section-title" style="text-align: left;">Contact Info</h2>
+                    <p style="margin-bottom: 20px;">Open for freelance opportunities.</p>
+                    <p><i class="fas fa-envelope fire-text"></i> jeremiahblessing931@gmail.com</p>
                 </div>
-
-                <div class="card scroll-reveal delay-2" style="text-align: left;">
-                    <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
-                        <div class="form-group">
-                            <label for="name" style="display: block; margin-bottom: 10px;">Your Name</label>
-                            <input type="text" id="name" name="name" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" style="display: block; margin-bottom: 10px;">Your Email</label>
-                            <input type="email" id="email" name="email" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" style="display: block; margin-bottom: 10px;">Message</label>
-                            <textarea id="message" name="message" class="form-input" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-fire" style="width: 100%; border: none;">Send Message</button>
+                <div class="card scroll-reveal delay-2">
+                    <form>
+                        <input type="text" placeholder="Name" style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(255,255,255,0.1); border: 1px solid #444; color: white;">
+                        <input type="email" placeholder="Email" style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(255,255,255,0.1); border: 1px solid #444; color: white;">
+                        <textarea placeholder="Message" style="width: 100%; height: 100px; padding: 10px; margin-bottom: 10px; background: rgba(255,255,255,0.1); border: 1px solid #444; color: white;"></textarea>
+                        <button class="btn btn-fire" style="border: none; width: 100%;">Send</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
-
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2025 Olayiwola. Built with <i class="fas fa-fire fire-text"></i> & Code.</p>
-        </div>
-    </footer>
 
     <script src="assets/js/main.js"></script>
 </body>
