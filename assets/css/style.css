@@ -2,14 +2,15 @@
    1. VARIABLES & RESET
    ========================================= */
 :root {
-    --fire-primary: #f59e0b;   /* Amber/Orange */
-    --fire-secondary: #ef4444; /* Red */
-    --mint-accent: #34d399;    /* Mint Green */
-    --text-white: #f8fafc;     /* White Text */
+    --fire-primary: #f59e0b;
+    --fire-secondary: #ef4444;
+    --mint-accent: #34d399;
+    --text-white: #f8fafc;
     --glass: rgba(15, 23, 42, 0.7); 
     --dark-bg: #0f172a;        
 }
 
+/* Restored normal mouse pointer for PCs */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
@@ -27,14 +28,17 @@ body {
 
 /* Background Image Layer */
 body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     z-index: -5;
-    background: 
-        linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95)),
-        url('../images/background.jpg') no-repeat center center;
+    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95)),
+                url('../images/background.jpg') no-repeat center center;
     background-size: cover;
+}
+
+/* NEW: Makes the fire animation cover every page behind the content */
+#fireCanvas {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -2; opacity: 0.5; pointer-events: none;
 }
 
 /* =========================================
@@ -51,47 +55,44 @@ body::before {
     border-radius: 50%; z-index: 9999; pointer-events: none;
     transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
-body:hover a:hover ~ .cursor-outline,
-body:hover button:hover ~ .cursor-outline { 
+body:hover a:hover ~ .cursor-outline, body:hover button:hover ~ .cursor-outline { 
     width: 50px; height: 50px; border-color: var(--mint-accent); 
 }
 
 /* =========================================
    3. TYPOGRAPHY & LAYOUT
    ========================================= */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-.section-padding { padding: 80px 0; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; z-index: 2; position: relative; }
+.section-padding { padding: 100px 0 60px 0; }
 
 .fire-text {
     background: linear-gradient(to right, var(--fire-primary), var(--fire-secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 700;
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; font-weight: 700;
 }
 
 .mint-title { font-size: 3.5rem; line-height: 1.1; color: var(--text-white); margin-bottom: 20px;}
 .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 50px; }
 
 /* =========================================
-   4. NAVIGATION
+   4. NAVIGATION & PERFECT CIRCLE LOGO
    ========================================= */
 .navbar {
     position: fixed; width: 100%; top: 0; padding: 15px 0;
-    background: rgba(15, 23, 42, 0.95);
-    z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
+    background: rgba(15, 23, 42, 0.95); z-index: 1000; 
+    border-bottom: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);
 }
 .navbar .container { display: flex; justify-content: space-between; align-items: center; }
 
-/* FIXED LOGO: Removed the circle crop so your image looks normal */
 .logo { display: flex; align-items: center; text-decoration: none; color: white; font-weight: bold; font-size: 1.5rem; }
+.logo img {
+    width: 45px; height: 45px; border-radius: 50%; /* Perfect Circle */
+    object-fit: cover; border: 2px solid var(--fire-primary); 
+    background-color: var(--dark-bg); margin-right: 10px;
+}
 
 .nav-links { display: flex; gap: 30px; list-style: none; }
-.nav-link, .nav-links a { 
-    color: var(--text-white); text-decoration: none; font-size: 1rem; 
-    position: relative; transition: 0.3s; font-weight: 500;
-}
+.nav-link, .nav-links a { color: var(--text-white); text-decoration: none; font-size: 1rem; position: relative; transition: 0.3s; font-weight: 500;}
 .nav-link:hover, .nav-link.active, .nav-links a:hover { color: var(--mint-accent); }
 .nav-link::after, .nav-links a::after {
     content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
@@ -102,21 +103,8 @@ body:hover button:hover ~ .cursor-outline {
 /* =========================================
    5. HERO SECTION & BUTTONS
    ========================================= */
-.hero { 
-    min-height: 100vh; 
-    display: flex; 
-    align-items: center; 
-    position: relative; 
-    overflow: hidden; 
-    padding-top: 80px; 
-}
+.hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 80px; }
 .hero-content { text-align: left; max-width: 800px; z-index: 2; }
-
-#fireCanvas {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1; opacity: 0.5; 
-}
-
 .cta-buttons { display: flex; gap: 20px; margin-top: 30px; }
 
 .btn {
@@ -128,233 +116,79 @@ body:hover button:hover ~ .cursor-outline {
     background: linear-gradient(45deg, var(--fire-primary), var(--fire-secondary)); 
     color: white; border: none; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
 }
-.btn-primary:hover, .btn-fire:hover { 
-    transform: translateY(-3px); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5); 
-}
-.btn-secondary, .btn-mint { 
-    background: transparent; border: 2px solid var(--mint-accent); color: var(--mint-accent); 
-}
-.btn-secondary:hover, .btn-mint:hover { 
-    background: var(--mint-accent); color: #0f172a; transform: translateY(-3px);
-}
+.btn-primary:hover, .btn-fire:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5); }
+.btn-secondary, .btn-mint { background: transparent; border: 2px solid var(--mint-accent); color: var(--mint-accent); }
+.btn-secondary:hover, .btn-mint:hover { background: var(--mint-accent); color: #0f172a; transform: translateY(-3px); }
 
 /* =========================================
-   6. CONTACT FORM
+   6. GRADIENT CARDS (About, Services, Experience)
+   ========================================= */
+/* About Page */
+.about-gradient-card {
+    display: flex; align-items: center; gap: 40px;
+    background: linear-gradient(145deg, rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.1));
+    border: 2px solid var(--fire-primary); border-radius: 20px; padding: 30px; margin-top: 30px;
+}
+.about-img-box { flex: 1; }
+.about-img-box img { width: 100%; border-radius: 15px; border: 2px solid var(--fire-primary); }
+.about-text-box { flex: 1.5; text-align: left; }
+
+/* Services & Experience Grid */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+.service-card {
+    background: linear-gradient(145deg, rgba(245, 158, 11, 0.15), rgba(239, 68, 68, 0.15));
+    border: 2px solid var(--fire-primary); border-radius: 15px; padding: 30px; text-align: left; transition: transform 0.3s ease;
+}
+.service-card:hover { transform: translateY(-5px); border-color: var(--mint-accent); }
+.service-icon { font-size: 2rem; color: var(--fire-primary); margin-bottom: 15px; }
+
+/* =========================================
+   7. CONTACT FORM & FOOTER
    ========================================= */
 .contact-section {
     width: 100%; max-width: 600px; margin: 40px auto; padding: 40px;
-    background: var(--glass); border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+    background: var(--glass); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);
 }
-
 .contact-form { display: flex; flex-direction: column; gap: 20px; }
 .form-group { display: flex; flex-direction: column; text-align: left; }
 .form-group label { margin-bottom: 8px; font-weight: 600; color: var(--mint-accent); font-size: 0.9rem; }
-
 .contact-form input, .contact-form textarea {
     padding: 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(0, 0, 0, 0.3); color: white; font-family: inherit; font-size: 1rem; transition: 0.3s;
 }
-.contact-form input:focus, .contact-form textarea:focus {
-    outline: none; border-color: var(--fire-primary); background: rgba(0, 0, 0, 0.5);
-}
+.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--fire-primary); background: rgba(0, 0, 0, 0.5); }
 
-/* =========================================
-   7. FOOTER & TECH STACK
-   ========================================= */
 .tech-stack { text-align: center; padding: 50px 20px; }
 .logos { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
 .logos img { height: 50px; width: auto; transition: transform 0.3s; }
 
-footer {
-    margin-top: auto; text-align: center; padding: 40px 20px;
-    color: rgba(255, 255, 255, 0.5); background: rgba(0,0,0,0.2); width: 100%;
-}
+footer { margin-top: auto; text-align: center; padding: 40px 20px; color: rgba(255, 255, 255, 0.5); background: rgba(0,0,0,0.2); width: 100%; }
 
 /* =========================================
-   8. MOBILE RESPONSIVENESS (MENU)
+   8. MOBILE RESPONSIVENESS
    ========================================= */
 .menu-toggle { display: none; cursor: pointer; }
 .bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: white; transition: 0.3s; }
 
 @media (max-width: 768px) {
-    .menu-toggle { display: block; z-index: 200; position: absolute; right: 20px; top: 25px; }
+    .cursor-dot, .cursor-outline { display: none !important; } /* Hide stuck circle on phones */
     
+    .menu-toggle { display: block; z-index: 200; position: absolute; right: 20px; top: 25px; }
     .nav-links {
         position: fixed; left: -100%; top: 0; width: 100%; height: 100vh;
-        flex-direction: column; background-color: #0f172a;
-        justify-content: center; align-items: center; transition: 0.3s; z-index: 150;
+        flex-direction: column; background-color: #0f172a; justify-content: center; align-items: center; transition: 0.3s; z-index: 150;
     }
     .nav-links.active { left: 0; }
     
     .mint-title { font-size: 2.5rem; }
     .hero-content { padding-top: 20px; }
-    
     .cta-buttons { flex-direction: column; width: 100%; }
     .btn { width: 100%; text-align: center; }
 
-    .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
-    .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-   }.hero-content { text-align: left; max-width: 800px; z-index: 2; }
-
-#fireCanvas {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1; opacity: 0.5; 
-}
-
-.cta-buttons { display: flex; gap: 20px; margin-top: 30px; }
-
-.btn {
-    padding: 14px 35px; border-radius: 50px; text-decoration: none; 
-    font-weight: bold; display: inline-block; transition: all 0.3s ease;
-    text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;
-}
-.btn-primary, .btn-fire {
-    background: linear-gradient(45deg, var(--fire-primary), var(--fire-secondary)); 
-    color: white; border: none; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
-}
-.btn-primary:hover, .btn-fire:hover { 
-    transform: translateY(-3px); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5); 
-}
-.btn-secondary, .btn-mint { 
-    background: transparent; border: 2px solid var(--mint-accent); color: var(--mint-accent); 
-}
-.btn-secondary:hover, .btn-mint:hover { 
-    background: var(--mint-accent); color: #0f172a; transform: translateY(-3px);
-}
-
-/* =========================================
-   6. CONTACT FORM
-   ========================================= */
-.contact-section {
-    width: 100%; max-width: 600px; margin: 40px auto; padding: 40px;
-    background: var(--glass); border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);
-}
-
-.contact-form { display: flex; flex-direction: column; gap: 20px; }
-.form-group { display: flex; flex-direction: column; text-align: left; }
-.form-group label { margin-bottom: 8px; font-weight: 600; color: var(--mint-accent); font-size: 0.9rem; }
-
-.contact-form input, .contact-form textarea {
-    padding: 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(0, 0, 0, 0.3); color: white; font-family: inherit; font-size: 1rem; transition: 0.3s;
-}
-.contact-form input:focus, .contact-form textarea:focus {
-    outline: none; border-color: var(--fire-primary); background: rgba(0, 0, 0, 0.5);
-}
-
-/* =========================================
-   7. FOOTER & TECH STACK
-   ========================================= */
-.tech-stack { text-align: center; padding: 50px 20px; }
-.logos { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
-.logos img { height: 50px; width: auto; transition: transform 0.3s; }
-
-footer {
-    margin-top: auto; text-align: center; padding: 40px 20px;
-    color: rgba(255, 255, 255, 0.5); background: rgba(0,0,0,0.2); width: 100%;
-}
-
-/* =========================================
-   8. MOBILE RESPONSIVENESS (MENU)
-   ========================================= */
-.menu-toggle { display: none; cursor: pointer; }
-.bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: white; transition: 0.3s; }
-
-@media (max-width: 768px) {
-    .menu-toggle { display: block; z-index: 200; position: absolute; right: 20px; top: 25px; }
-    
-    .nav-links {
-        position: fixed; left: -100%; top: 0; width: 100%; height: 100vh;
-        flex-direction: column; background-color: #0f172a;
-        justify-content: center; align-items: center; transition: 0.3s; z-index: 150;
-    }
-    .nav-links.active { left: 0; }
-    
-    .mint-title { font-size: 2.5rem; }
-    .hero-content { padding-top: 20px; }
-    
-    .cta-buttons { flex-direction: column; width: 100%; }
-    .btn { width: 100%; text-align: center; }
+    .about-gradient-card { flex-direction: column; text-align: center; }
+    .about-text-box { text-align: center; }
 
     .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
     .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
    }
-/* --- 1. Fix Stuck Cursor on Mobile & Logo Shape --- */
-@media (max-width: 768px) {
-    /* Hides the stuck orange circle on phones */
-    .cursor-dot, .cursor-outline { display: none !important; } 
-}
-
-.logo img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%; /* Forces perfect circle */
-    object-fit: cover;  /* Prevents squishing */
-    border: 2px solid var(--fire-primary); /* Orange border */
-    background-color: var(--dark-bg);
-}
-
-/* --- 2. Gradient Cards for About & Services --- */
-/* About Page */
-.about-gradient-card {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    background: linear-gradient(145deg, rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.1));
-    border: 2px solid var(--fire-primary);
-    border-radius: 20px;
-    padding: 30px;
-    margin-top: 30px;
-}
-.about-img-box {
-    flex: 1;
-}
-.about-img-box img {
-    width: 100%;
-    border-radius: 15px;
-    border: 2px solid var(--fire-primary);
-}
-.about-text-box {
-    flex: 1.5;
-    text-align: left;
-}
-
-/* Services Page */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-.service-card {
-    background: linear-gradient(145deg, rgba(245, 158, 11, 0.15), rgba(239, 68, 68, 0.15));
-    border: 2px solid var(--fire-primary);
-    border-radius: 15px;
-    padding: 30px;
-    text-align: left;
-    transition: transform 0.3s ease;
-}
-.service-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--mint-accent);
-}
-.service-icon {
-    font-size: 2rem;
-    color: var(--fire-primary);
-    margin-bottom: 15px;
-}
-
-/* Mobile Layout for About Card */
-@media (max-width: 768px) {
-    .about-gradient-card {
-        flex-direction: column; /* Stacks image on top of text on phones */
-        text-align: center;
-    }
-    .about-text-box {
-        text-align: center;
-    }
-}
