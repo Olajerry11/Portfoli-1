@@ -10,7 +10,7 @@
     --dark-bg: #0f172a;        
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 body {
@@ -283,3 +283,78 @@ footer {
     .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
    }
+/* --- 1. Fix Stuck Cursor on Mobile & Logo Shape --- */
+@media (max-width: 768px) {
+    /* Hides the stuck orange circle on phones */
+    .cursor-dot, .cursor-outline { display: none !important; } 
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Forces perfect circle */
+    object-fit: cover;  /* Prevents squishing */
+    border: 2px solid var(--fire-primary); /* Orange border */
+    background-color: var(--dark-bg);
+}
+
+/* --- 2. Gradient Cards for About & Services --- */
+/* About Page */
+.about-gradient-card {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background: linear-gradient(145deg, rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.1));
+    border: 2px solid var(--fire-primary);
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 30px;
+}
+.about-img-box {
+    flex: 1;
+}
+.about-img-box img {
+    width: 100%;
+    border-radius: 15px;
+    border: 2px solid var(--fire-primary);
+}
+.about-text-box {
+    flex: 1.5;
+    text-align: left;
+}
+
+/* Services Page */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+.service-card {
+    background: linear-gradient(145deg, rgba(245, 158, 11, 0.15), rgba(239, 68, 68, 0.15));
+    border: 2px solid var(--fire-primary);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--mint-accent);
+}
+.service-icon {
+    font-size: 2rem;
+    color: var(--fire-primary);
+    margin-bottom: 15px;
+}
+
+/* Mobile Layout for About Card */
+@media (max-width: 768px) {
+    .about-gradient-card {
+        flex-direction: column; /* Stacks image on top of text on phones */
+        text-align: center;
+    }
+    .about-text-box {
+        text-align: center;
+    }
+}
