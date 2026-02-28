@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | Olayiwola</title>
+    <title>About | Olayiwola</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -11,6 +11,7 @@
 <body>
     <div class="cursor-dot" data-cursor-dot></div>
     <div class="cursor-outline" data-cursor-outline></div>
+    <canvas id="fireCanvas"></canvas>
 
     <header class="navbar">
         <div class="container">
@@ -19,15 +20,13 @@
                 <span class="fire-text">OLA</span>JERRY
             </a>
             <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </div>
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="services.html">Services</a></li>
                     <li><a href="experience.html">Experience</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
@@ -35,37 +34,23 @@
         </div>
     </header>
 
-    <section class="section-padding" style="margin-top: 60px;">
+    <section class="section-padding">
         <div class="container">
-            <h1 class="section-title">My <span class="fire-text">Services</span></h1>
-            
-            <div class="services-grid">
-                
-                <div class="service-card">
-                    <i class="fa-solid fa-code service-icon"></i>
-                    <h3 style="margin-bottom: 10px;">Frontend Development</h3>
-                    <p style="color: #cbd5e1;">Building responsive, fast, and interactive websites using HTML, CSS, and modern JavaScript frameworks.</p>
+            <h1 class="section-title">About <span class="fire-text">Me</span></h1>
+            <div class="about-gradient-card">
+                <div class="about-img-box">
+                    <img src="assets/images/profile.jpg" alt="Olayiwola Blessing">
                 </div>
-
-                <div class="service-card">
-                    <i class="fa-brands fa-python service-icon"></i>
-                    <h3 style="margin-bottom: 10px;">Python Scripting</h3>
-                    <p style="color: #cbd5e1;">Automating complex tasks and building robust backend logic to power data-driven applications.</p>
+                <div class="about-text-box">
+                    <h2 style="margin-bottom: 15px; font-size: 2rem;">The Developer Behind the Code</h2>
+                    <p style="margin-bottom: 20px; color: #cbd5e1;">I'm a passionate developer dedicated to building dynamic and user-friendly web experiences. With a strong foundation in core web technologies and a keen eye for detail, I turn complex problems into elegant, functional solutions.</p>
+                    <a href="contact.html" class="btn btn-fire">Let's Talk</a>
                 </div>
-
-                <div class="service-card">
-                    <i class="fa-solid fa-terminal service-icon"></i>
-                    <h3 style="margin-bottom: 10px;">C++ Programming</h3>
-                    <p style="color: #cbd5e1;">High-performance application development and systems programming for demanding software needs.</p>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; <span id="year"></span> Olayiwola. Built with ❤️ & Code.</p>
-    </footer>
+    <footer><p>&copy; <span id="year"></span> Olayiwola. Built with ❤️ & Code.</p></footer>
 
     <script>
         document.getElementById("year").textContent = new Date().getFullYear();
@@ -73,11 +58,10 @@
         const navLinks = document.querySelector('.nav-links');
         if(menuToggle) {
             menuToggle.addEventListener('click', () => {
-                menuToggle.classList.toggle('is-active');
-                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('is-active'); navLinks.classList.toggle('active');
             });
         }
     </script>
     <script src="assets/js/script.js"></script>
 </body>
-</html>
+                </html>
