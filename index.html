@@ -11,23 +11,18 @@
 <body>
     <div class="cursor-dot" data-cursor-dot></div>
     <div class="cursor-outline" data-cursor-outline></div>
-
-    <header class="navbar">
+    <canvas id="fireCanvas"></canvas> <header class="navbar">
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="assets/images/logo.png" alt="Logo" style="height: 50px; margin-right: 10px;">
+                <img src="assets/images/logo.png" alt="Logo">
                 <span class="fire-text">OLA</span>JERRY
             </a>
-            
             <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </div>
-
             <nav>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="experience.html">Experience</a></li>
@@ -38,12 +33,9 @@
     </header>
 
     <section class="hero">
-        <canvas id="fireCanvas"></canvas>
-        
         <div class="container hero-content">
             <h1 class="mint-title">Building Fast, <br> <span class="fire-text">Responsive Websites</span></h1>
             <p style="font-size: 1.2rem; margin-top: 10px; color: #cbd5e1;">High-performance digital experiences with buttery smooth interactions.</p>
-            
             <div class="cta-buttons">
                 <a href="contact.html" class="btn btn-fire">Start a Project</a>
                 <a href="experience.html" class="btn btn-mint">View Work</a>
@@ -61,24 +53,18 @@
         </div>
     </section>
 
-    <footer>
-        <p>&copy; <span id="year"></span> Olayiwola. Built with ❤️ & Code.</p>
-    </footer>
+    <footer><p>&copy; <span id="year"></span> Olayiwola. Built with ❤️ & Code.</p></footer>
 
     <script>
         document.getElementById("year").textContent = new Date().getFullYear();
-        
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
-        
         if(menuToggle) {
             menuToggle.addEventListener('click', () => {
-                menuToggle.classList.toggle('is-active');
-                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('is-active'); navLinks.classList.toggle('active');
             });
         }
     </script>
-    
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/script.js"></script> 
 </body>
-                                                                                                                                                      </html>
+                    </html>
