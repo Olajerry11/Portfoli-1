@@ -11,20 +11,17 @@
 <body>
     <div class="cursor-dot" data-cursor-dot></div>
     <div class="cursor-outline" data-cursor-outline></div>
+    <canvas id="fireCanvas"></canvas>
 
     <header class="navbar">
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="assets/images/logo.png" alt="Logo" style="height: 50px; margin-right: 10px;">
+                <img src="assets/images/logo.png" alt="Logo">
                 <span class="fire-text">OLA</span>JERRY
             </a>
-            
             <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </div>
-
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
@@ -37,49 +34,39 @@
         </div>
     </header>
 
-    <section class="section-padding" style="margin-top: 60px;">
+    <section class="section-padding">
         <div class="container">
             <h1 class="section-title"><span class="fire-text">Get In Touch</span></h1>
-            
             <form action="https://formspree.io/f/mzdavekg" method="POST" class="contact-form">
-                
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" name="name" required placeholder="Your Name">
                 </div>
-
                 <div class="form-group">
                     <label>Email</label>
                     <input type="email" name="email" required placeholder="Your Email">
                 </div>
-
                 <div class="form-group">
                     <label>Message</label>
                     <textarea name="message" rows="5" required placeholder="How can I help you?"></textarea>
                 </div>
-
                 <button type="submit" class="btn btn-fire" style="border: none; cursor: pointer; width: 100%;">Send Message</button>
             </form>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; <span id="year"></span> Olayiwola. Built with ❤️ & Code.</p>
-    </footer>
+    <footer><p>&copy; <span id="year"></span> Olayiwola. Built with ❤️ & Code.</p></footer>
 
     <script>
         document.getElementById("year").textContent = new Date().getFullYear();
-
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
-        
         if(menuToggle) {
             menuToggle.addEventListener('click', () => {
-                menuToggle.classList.toggle('is-active');
-                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('is-active'); navLinks.classList.toggle('active');
             });
         }
     </script>
     <script src="assets/js/script.js"></script>
 </body>
-    </html>
+        </html>
