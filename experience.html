@@ -5,53 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experience | Olayiwola</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="cursor-dot" data-cursor-dot></div>
     <div class="cursor-outline" data-cursor-outline></div>
+    <canvas id="fireCanvas"></canvas>
 
     <header class="navbar">
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="assets/images/logo.png" alt="Logo" style="height: 40px; margin-right: 10px;">
+                <img src="assets/images/logo.png" alt="Logo">
                 <span class="fire-text">OLA</span>JERRY
             </a>
-            <div class="menu-toggle" id="mobile-menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </div>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="experience.html" class="nav-link active">Experience</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="experience.html" class="active">Experience</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="hero" style="height: 50vh;">
-        <canvas id="fireCanvas"></canvas>
-        <div class="container hero-content scroll-reveal" style="justify-content: center;">
-            <h1 class="mint-title">My <span class="fire-text">Journey</span></h1>
+    <section class="section-padding">
+        <div class="container">
+            <h1 class="section-title">My <span class="fire-text">Journey</span></h1>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 5px;" class="fire-text">Frontend Developer Intern</h3>
+                    <h4 style="color: var(--mint-accent); margin-bottom: 15px; font-weight: 500;">Tech Solutions | 2024</h4>
+                    <p style="color: #cbd5e1;">Maintained responsive web pages using HTML, CSS, and JS.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 5px;" class="fire-text">Freelance Python Developer</h3>
+                    <h4 style="color: var(--mint-accent); margin-bottom: 15px; font-weight: 500;">Remote | 2024</h4>
+                    <p style="color: #cbd5e1;">Created automation scripts for data entry tasks.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="section-padding">
-        <div class="container">
-            <div class="card scroll-reveal delay-1" style="margin-bottom: 20px; text-align: left;">
-                <h3 class="fire-text">Frontend Developer Intern</h3>
-                <h4 style="color: var(--mint-accent);">Tech Solutions | 2024</h4>
-                <p>Maintained responsive web pages using HTML, CSS, and JS.</p>
-            </div>
-            <div class="card scroll-reveal delay-2" style="margin-bottom: 20px; text-align: left;">
-                <h3 class="fire-text">Freelance Python Developer</h3>
-                <h4 style="color: var(--mint-accent);">Remote | 2024</h4>
-                <p>Created automation scripts for data entry tasks.</p>
-            </div>
-        </div>
-    </section>
-    <script src="assets/js/main.js"></script>
+    <footer><p>&copy; <span id="year"></span> Olayiwola. Built with ❤️ & Code.</p></footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if(menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('is-active'); navLinks.classList.toggle('active');
+            });
+        }
+    </script>
+    <script src="assets/js/script.js"></script>
 </body>
-</html>
+                                                         </html>
