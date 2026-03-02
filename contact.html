@@ -37,7 +37,7 @@
     <section class="section-padding">
         <div class="container">
             <h1 class="section-title"><span class="fire-text">Get In Touch</span></h1>
-            <form action="https://formspree.io/f/mjgednea" method="POST" class="contact-form">
+            <form action="https://formspree.io/f/mzdavekg" method="POST" class="contact-form">
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" name="name" required placeholder="Your Name">
@@ -55,10 +55,15 @@
         </div>
     </section>
 
+    <a href="https://wa.me/2348103570168" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
     <footer><p>&copy; <span id="year"></span> Olayiwola. Built with ❤️ & Code.</p></footer>
 
     <script>
         document.getElementById("year").textContent = new Date().getFullYear();
+        
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
         if(menuToggle) {
@@ -66,7 +71,43 @@
                 menuToggle.classList.toggle('is-active'); navLinks.classList.toggle('active');
             });
         }
+
+        // Guaranteed Fire Animation
+        const canvas = document.getElementById("fireCanvas");
+        const ctx = canvas.getContext("2d");
+        let particles = [];
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function animateFire() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if(particles.length < 150) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: canvas.height + 10,
+                    size: Math.random() * 4 + 1,
+                    speedY: Math.random() * -3 - 1,
+                    color: `rgba(245, 158, 11, ${Math.random()})`
+                });
+            }
+            for(let i=0; i<particles.length; i++) {
+                let p = particles[i];
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                p.y += p.speedY;
+                if(p.y < canvas.height / 2) { particles.splice(i, 1); i--; }
+            }
+            requestAnimationFrame(animateFire);
+        }
+        animateFire();
     </script>
     <script src="assets/js/script.js"></script>
 </body>
-        </html>
+                    </html>
